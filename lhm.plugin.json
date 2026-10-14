@@ -1,0 +1,122 @@
+{
+  "author": "apipj (https://apipj.com.br)",
+  "cloudEndpoint": "https://apipj.com.br/mcp",
+  "description": "Remote MCP server for Brazilian CNPJ lookup and validation (Receita Federal open data): company records, partners, CNAE, Simples Nacional and MEI, alphanumeric CNPJ.",
+  "homepage": "https://apipj.com.br/guias/consultar-cnpj-ia-mcp",
+  "identifier": "apipj-cnpj",
+  "name": "apipj · CNPJ Lookup",
+  "prompts": [],
+  "resources": [],
+  "tags": [
+    "mcp",
+    "mcp-server",
+    "cnpj",
+    "brazil",
+    "receita-federal",
+    "api-cnpj"
+  ],
+  "tools": [
+    {
+      "name": "consultar_cnpj",
+      "title": "Consultar CNPJ",
+      "description": "Dados cadastrais públicos de um CNPJ na base da Receita Federal (lote mensal): razão social, nome fantasia, situação cadastral, endereço, telefones, e-mail, atividades CNAE, natureza jurídica, porte, capital social, Simples/MEI e sócios (CPF mascarado). Exige uma conta apipj: o cliente pede para conectar e entrar com o Google (OAuth) ou envia uma chave de API; cada consulta conta no limite por minuto e na cota mensal do plano da conta.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cnpj": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32,
+            "description": "CNPJ com ou sem pontuação, numérico ou alfanumérico (ex.: 11.378.117/0001-20)"
+          },
+          "formato": {
+            "type": "string",
+            "enum": [
+              "completo",
+              "simplificado"
+            ],
+            "default": "completo",
+            "description": "completo (padrão: objetos aninhados, datas ISO e códigos da Receita) ou simplificado (plano, com datas DD/MM/AAAA e CNPJ, CEP e telefone formatados)"
+          }
+        },
+        "required": [
+          "cnpj"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Consultar CNPJ",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "cnpj"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "validar_cnpj",
+      "title": "Validar CNPJ",
+      "description": "Confere formato e dígitos verificadores de um CNPJ (numérico ou alfanumérico) sem consultar a base. Devolve cnpj, valido, formatado, alfanumerico e erro. Sem chave e sem consumo de cota.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cnpj": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32,
+            "description": "CNPJ com ou sem pontuação, numérico ou alfanumérico (ex.: 11.378.117/0001-20)"
+          }
+        },
+        "required": [
+          "cnpj"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Validar CNPJ",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ]
+      }
+    },
+    {
+      "name": "status_base",
+      "title": "Status da base",
+      "description": "Status do serviço e da base de CNPJ: mês do lote da Receita Federal carregado, data de geração e quantidade de CNPJs. Sem chave e sem consumo de cota.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Status da base",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      },
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "noauth"
+          }
+        ]
+      }
+    }
+  ],
+  "version": "0.2.0"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "apipj-mcp",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Remote MCP server for Brazilian CNPJ lookup and validation (Receita Federal open data): company records, partners, CNAE, Simples Nacional and MEI, alphanumeric CNPJ.",
+  "homepage": "https://apipj.com.br/guias/consultar-cnpj-ia-mcp",
+  "repository": { "type": "git", "url": "git+https://github.com/apipj/apipj-mcp.git" },
+  "license": "MIT",
+  "keywords": ["mcp", "mcp-server", "cnpj", "brazil", "receita-federal", "api-cnpj"],
+  "author": "apipj (https://apipj.com.br)"
+}
