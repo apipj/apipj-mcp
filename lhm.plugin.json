@@ -3,7 +3,7 @@
   "cloudEndpoint": "https://apipj.com.br/mcp",
   "description": "Remote MCP server for Brazilian CNPJ lookup and validation (Receita Federal open data): company records, partners, CNAE, Simples Nacional and MEI, alphanumeric CNPJ.",
   "homepage": "https://apipj.com.br/guias/consultar-cnpj-ia-mcp",
-  "identifier": "apipj-cnpj",
+  "identifier": "apipj-apipj-mcp",
   "name": "apipj · CNPJ Lookup",
   "prompts": [],
   "resources": [],
