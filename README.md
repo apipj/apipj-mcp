@@ -54,6 +54,8 @@ claude mcp add --transport http apipj https://apipj.com.br/mcp
 { "servers": { "apipj": { "type": "http", "url": "https://apipj.com.br/mcp" } } }
 ```
 
+**Cline:** add the server to `cline_mcp_settings.json` as described in [llms-install.md](llms-install.md).
+
 **Other clients (with an API key):**
 
 ```json
